@@ -10,6 +10,8 @@ import createApiRouter from "./createApiRouter";
 
 import getIndexFileContent from "./getIndexFileContent";
 
+const coerceJson = (path?: string) => path && require(path);
+
 const argv = yargs
   .config()
   .help()
