@@ -1,5 +1,6 @@
 import * as cors from "cors";
 import * as helmet from "helmet";
+import * as _ from "lodash";
 import * as compression from "compression";
 import * as express from "express";
 import * as path from "path";
@@ -7,6 +8,7 @@ import * as URI from "urijs";
 import * as yargs from "yargs";
 import * as morgan from "morgan";
 import createApiRouter from "./createApiRouter";
+import defaultConfig from "./defaultConfig";
 
 import getIndexFileContent from "./getIndexFileContent";
 
@@ -74,9 +76,14 @@ app.use(compression());
 // Set sensible secure headers
 app.disable("x-powered-by");
 
+app.use(helmet(_.merge({}, defaultConfig.helmet, argv.helmetJson as {})));
+app.use(
+  helmet.contentSecurityPolicy(_.merge({}, defaultConfig.csp, argv.cspJson))
+);
+
 // Set up CORS headers for all requests
 const configuredCors = cors(
-  _.merge({}, defaultConfig.cors, config.corsJson as {})
+  _.merge({}, defaultConfig.cors, argv.corsJson as {})
 );
 app.options("*", configuredCors);
 app.use(configuredCors);
