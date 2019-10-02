@@ -1,0 +1,6 @@
+apiVersion: v1
+name: "magda-one-lick"
+description: "A web based magda deployment tool."
+version: "1.0.0"
+home: "https://github.com/magda-io/one-click-magda"
+sources: ["https://github.com/magda-io/one-click-magda"]

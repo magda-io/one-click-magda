@@ -1,0 +1,18 @@
+global:
+  externalUrl: "http://localhost:6100"
+  rollingUpdate:
+    maxUnavailable: 0
+  exposeNodePorts: false
+  image:
+    tag: 1.0.0
+    repository: "data61"
+    pullPolicy: IfNotPresent
+  logLevel: INFO
+  namespace: default
+  gapiIds: []
+  enablePriorityClass: false
+
+tags:
+  priorities: true
+  all: true
+  web-server: false
