@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "pancake && yarn run start",
     "prepare": "pancake",
-    "start": "craco start --react-scripts ../node_modules/react-scripts",
+    "start": "export HTTPS=true && craco start --react-scripts ../node_modules/react-scripts",
     "build": "pancake && craco build --react-scripts ../node_modules/react-scripts",
     "test": "craco test --react-scripts ../node_modules/react-scripts",
     "eject": "react-scripts eject",
